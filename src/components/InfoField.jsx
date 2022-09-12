@@ -4,6 +4,7 @@ import "chartjs-plugin-streaming";
 import moment from "moment";
 import '../styles/infofield.css'
 import { useSelector } from "react-redux";
+import { Range } from "react-range";
 
 const Chart = require("react-chartjs-2").Chart;
 
@@ -113,7 +114,10 @@ function InfoField(props) {
               </div>
                <p className="status">LIVE</p> 
           </div>
+
         
+
+
         </div>
     </div>
   );
