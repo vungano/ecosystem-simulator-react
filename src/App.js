@@ -1,16 +1,16 @@
 import React from "react";
 import "../src/styles/style.css"
 import MainField from "./components/MainField";
-import BarChart from "./components/BarChart";
+import InfoField from "./components/InfoField";
 
 function App() {
 
-  const speed = 100;
+  const speed = 5000;
 
   return (
     <div className="app">
         <MainField speed={speed}/>  
-        <BarChart speed={speed}/>
+        <InfoField speed={speed}/>
     </div>
   );
 }
