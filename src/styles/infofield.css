@@ -1,4 +1,5 @@
 .infofield{
+    padding:  0;
     width: 50%;
     height: 100%;
 }
@@ -8,43 +9,120 @@
     height: 50%;
 }
 
+
 .head{
     margin-left: 5%;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
+    text-align: center;
 }
 
 hr{
     margin-top: -20px;
     width: 95%;
 }
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 15px;
+    margin-left: 10%;
+    margin-top: 20px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
 
-.flex{
-    display: flex;
-    align-items: center;
-}
 
-.pop-container{
-    height: 10%;
+.grid{
+    margin-top: -10px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(6,27px);
     margin-left: 10px;
-    width: 18%;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 8px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 3px 0 0px 15px;
+    margin-right: 10px\;
 }
 
-.pop-container p{
-    font-size: 1.2rem;
+.grid p{
+    font-size: 14px;
+}
+
+.grid-item{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.centre{
+    text-align: center;
+}
+.plnt{
+    color: #00AD43;
+}
+
+.fx{
+    color: #ED7226;
 }
 
 
-.vr{
-    margin: 0 20px;
-    width: 2px;
-    height: 40px;
-    background-color: grey;
-}
+@media only screen and (max-width: 600px) {
+    .infofield{
+        padding:  0;
+        width: 100%;
+        height: fit-content;
+    }
+    
+    .infofield{
+        margin-top: 25px;
+    }
+    
+    .grid{
+        margin-bottom: 20px;
+    }
 
-.status{
-    margin-left: 50px;
-    font-weight: 700;
-    letter-spacing: 0.2rem;
-    color: lime;
+    .grid p{
+        font-size: 12px;
+    }
+
+    .head{
+        font-size: 1.1rem;
+        margin-bottom: 35px;
+    }
+
+}
+@media only screen and (min-width: 600px) and (max-width: 1100px){
+    body{
+        background-color: #F2F5EA;
+    }
 }

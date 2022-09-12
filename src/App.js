@@ -5,7 +5,7 @@ import InfoField from "./components/InfoField";
 
 function App() {
 
-  const speed = 5000;
+  const speed = 1000;
 
   return (
     <div className="app">

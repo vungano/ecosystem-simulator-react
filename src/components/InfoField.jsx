@@ -22,14 +22,14 @@ const color = Chart.helpers.color;
 const data = {
   datasets: [
     {
-      label: "Dataset 1 (linear interpolation)",
+      label: "Rabbits Population",
       backgroundColor: color(chartColors.red)
         .alpha(0.5)
         .rgbString(),
       borderColor: chartColors.red,
       fill: true,
       lineTension: 0,
-      borderDash: [8, 4],
+      borderDash: [4, 2],
       data: []
     }
   ]
@@ -88,34 +88,25 @@ function InfoField(props) {
     }
   };
   
-
   return (
     <div className='infofield'>
         <div className="barchart">
-          <Line data={data} options={options} />
+          <Line data={data} options={options}  />
         </div>
 
+        <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+        </div>
         <div className="info">
-          <p className="head">Population</p>
+          <p className="head">Population Statistics</p>
           <hr />
-          <div className="flex">
-              <div className="pop-container">
-                  <p>Rabbits : 20</p>
-              </div>
-              <div className="vr"></div>
-
-              <div className="pop-container">
-                  <p>Foxes : 20</p>
-              </div>
-              <div className="vr"></div>
-
-              <div className="pop-container">
-                  <p>Plants : 20</p>
-              </div>
-               <p className="status">LIVE</p> 
-          </div>
-
-        
+          <div className="grid">
+              <p></p>              <p className="bold centre rab"> Rabbits</p> <p className="bold centre fx">Foxes</p> <p className="bold centre plnt">Plants</p>
+              <p>Starting Pop</p>  <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p>   
+              <p>Current Pop</p>   <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p> 
+              <p>Males</p>         <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p>       
+              <p>Females</p>       <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p>
+          </div>  
 
 
         </div>
