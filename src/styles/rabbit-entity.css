@@ -1,0 +1,20 @@
+
+.rabbit{
+    position: absolute;
+    width: 2%;
+    height: 2%;
+    background-color: #000000;
+    border-radius: 25px;
+    z-index: 100;
+}
+
+.rabit-radar{
+    position: absolute;
+    border-radius: 25px;
+    position: absolute;
+    width: 10%;
+    height: 10%;   
+    background-color: #E5ECF6;
+    border-radius: 100px;  
+    filter:blur(25px);
+     }

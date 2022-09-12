@@ -1,0 +1,22 @@
+
+.fox{
+    position: absolute;
+    width: 2%;
+    height: 2%;
+    background-color: #ED7226;
+    border-radius: 25px;
+    z-index: 100;
+   
+}
+
+.fox-radar{
+    z-index: 10;
+    position: absolute;
+    border-radius: 25px;
+    position: absolute;
+    width: 10%;
+    height: 10%;   
+    background-color: #E5ECF6;
+    filter:blur(25px);
+    border-radius: 100px;  
+}
