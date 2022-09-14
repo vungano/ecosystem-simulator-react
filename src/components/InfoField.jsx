@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import "chartjs-plugin-streaming";
 import moment from "moment";
 import '../styles/infofield.css'
 import { useSelector } from "react-redux";
-import { Range } from "react-range";
+import ReactSlider from "react-slider";
+import '../styles/slider.css'
 
+//declare varibale for initial number of elements in our ecosystem  
+let iniitialRabbits, initialPlants, initialFoxes 
 const Chart = require("react-chartjs-2").Chart;
 
 const chartColors = {
@@ -23,10 +26,10 @@ const data = {
   datasets: [
     {
       label: "Rabbits Population",
-      backgroundColor: color(chartColors.red)
+      backgroundColor: color(chartColors.blue)
         .alpha(0.5)
         .rgbString(),
-      borderColor: chartColors.red,
+      borderColor: chartColors.blue,
       fill: true,
       lineTension: 0,
       borderDash: [4, 2],
@@ -38,7 +41,41 @@ const data = {
 
 function InfoField(props) {
 
+  //get global state values for the elements
   const rabbits = useSelector(state=>state.rabbits)
+  const foxes = useSelector(state=>state.foxes)
+  const plants = useSelector(state=>state.plants)
+
+  //Set initial values 
+  useEffect(()=>{
+    iniitialRabbits = rabbits.length
+    initialFoxes = foxes.length
+    initialPlants = plants.length
+  },[])
+
+  let rabbitMales= 0
+  let rabbitFemales = 0 
+  let foxesMales= 0 
+  let  foxesFemales = 0
+
+  
+  //calculate the females and males for rabbits
+  for(let i=0; i<rabbits.length; i++){
+    if(rabbits[i].gender==0){
+        rabbitFemales++
+    }
+  }
+  rabbitMales = rabbits.length - rabbitFemales
+
+  
+  //calculate the females and males for foxes
+  for(let i=0; i<foxes.length; i++){
+    if(foxes[i].gender==0){
+        foxesFemales++
+    }
+  }
+  foxesMales = foxes.length - foxesFemales
+
   const options = {
     elements: {
       line: {
@@ -57,7 +94,7 @@ function InfoField(props) {
                 y: rabbits.length
               });
             },
-            delay: 3000,
+            delay: props.speed+1000,
             time: {
               displayFormat: "h:mm"
             }
@@ -88,6 +125,11 @@ function InfoField(props) {
     }
   };
   
+  function onSliderChange(value){
+    props.parseSpeed(value)
+  }
+    
+  
   return (
     <div className='infofield'>
         <div className="barchart">
@@ -95,17 +137,23 @@ function InfoField(props) {
         </div>
 
         <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+          <ReactSlider
+            className="horizontal-slider"
+            thumbClassName="example-thumb"
+            trackClassName="example-track"
+            onChange={onSliderChange}
+          />
         </div>
+        
         <div className="info">
           <p className="head">Population Statistics</p>
           <hr />
           <div className="grid">
               <p></p>              <p className="bold centre rab"> Rabbits</p> <p className="bold centre fx">Foxes</p> <p className="bold centre plnt">Plants</p>
-              <p>Starting Pop</p>  <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p>   
-              <p>Current Pop</p>   <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p> 
-              <p>Males</p>         <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p>       
-              <p>Females</p>       <p className="centre">1</p>                 <p className="centre">1</p>             <p className="centre">1</p>
+              <p>Starting Pop</p>  <p className="centre">{iniitialRabbits}</p> <p className="centre">{initialFoxes}</p><p className="centre">{initialPlants}</p>   
+              <p>Current Pop</p>   <p className="centre">{rabbits.length}</p>  <p className="centre">{foxes.length}</p> <p className="centre">{plants.length}</p> 
+              <p>Males</p>         <p className="centre">{rabbitMales}</p>     <p className="centre">{foxesMales}</p>   <p className="centre">null</p>       
+              <p>Females</p>       <p className="centre">{rabbitFemales}</p>   <p className="centre">{rabbitMales}</p>  <p className="centre">null</p>
           </div>  
 
 
