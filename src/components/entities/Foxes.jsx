@@ -101,12 +101,7 @@ function Foxes(props) {
     }    
   }  
 
-  //console.log("<!------------------!>")
-  //console.log(foxObject[0].top ," vs ", foxObject[1].top )
-  //console.log(foxObject[0].left ," vs ", foxObject[1].left )
-  //foxObject.length>0 ? console.log(foxObject[foxObject.length-1].energy , " vs ", foxObject[0].energy) : console.log('0')
-  
-
+ 
   //function to check if there are any rabbits nearby for mating and if they have enough sex drive to mate
   function checkRadar(){
     for(let i=0; i<foxObject.length-1;i++){
@@ -119,8 +114,7 @@ function Foxes(props) {
                 tempState[i].left = tempState[j].left                
                 dispatch(setFoxes(tempState))
               }
-
-              //rabbit i is female and j is male
+            //rabbit i is female and j is male
               else if((foxObject[i].gender<foxObject[j].gender) && (foxObject[i].sexDrive>15 && foxObject[j].sexDrive>15)){
                 let tempState = [...foxObject]
                 tempState[j].top = tempState[i].top
@@ -161,6 +155,7 @@ function Foxes(props) {
     }
   }
 
+  //putting all the functions in one place for them  to be updated at the same time
   function updateInterval(){
     moveFoxes()
     checkRadar()

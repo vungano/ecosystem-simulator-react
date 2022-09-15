@@ -77,7 +77,9 @@ hr{
     }
     
     .grid{
+        background-color: #ffffff;
         margin-bottom: 20px;
+        margin-right: 10px;
     }
 
     .grid p{

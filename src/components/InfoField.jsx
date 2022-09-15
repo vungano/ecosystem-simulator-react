@@ -11,6 +11,7 @@ import '../styles/slider.css'
 let iniitialRabbits, initialPlants, initialFoxes 
 const Chart = require("react-chartjs-2").Chart;
 
+//different cahrt colors to choose from
 const chartColors = {
   red: "rgb(255, 99, 132)",
   orange: "rgb(255, 159, 64)",
@@ -20,8 +21,9 @@ const chartColors = {
   purple: "rgb(153, 102, 255)",
   grey: "rgb(201, 203, 207)"
 };
-
 const color = Chart.helpers.color;
+
+//data for the line chart
 const data = {
   datasets: [
     {
@@ -76,6 +78,7 @@ function InfoField(props) {
   }
   foxesMales = foxes.length - foxesFemales
 
+  //options for the line chart 
   const options = {
     elements: {
       line: {
@@ -118,18 +121,18 @@ function InfoField(props) {
         {
           ticks: {
             beginAtZero: true,
-            max: 100
+            max: 50
           }
         }
       ]
     }
   };
   
+  //When the slider changes get the new speed value from the slider 
   function onSliderChange(value){
     props.parseSpeed(value)
   }
     
-  
   return (
     <div className='infofield'>
         <div className="barchart">
@@ -155,8 +158,6 @@ function InfoField(props) {
               <p>Males</p>         <p className="centre">{rabbitMales}</p>     <p className="centre">{foxesMales}</p>   <p className="centre">null</p>       
               <p>Females</p>       <p className="centre">{rabbitFemales}</p>   <p className="centre">{foxesFemales}</p> <p className="centre">null</p>
           </div>  
-
-
         </div>
     </div>
   );

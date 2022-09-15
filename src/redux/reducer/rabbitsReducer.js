@@ -1,3 +1,5 @@
+//RABBITS REDUCER ie global state for storing and tracking all the plants in the ecosystem
+
 const initialState = {rabbits:[]}
 
 //initialize random 25 rabbits in different positions and add them to initial state

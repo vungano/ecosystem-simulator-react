@@ -6,10 +6,11 @@ import '../../styles/plants-entity.css'
 
 function Plants(props) {
 
+  //plant state from redux
   const plantsObject = useSelector(state=> state.plants)
   const dispatch = useDispatch()
   
-
+  //Function to generate the plants and add them to the plants object
   function generatePlants(){
     let temp = [...plantsObject]
     for(let i=0; i<7; i++){
@@ -24,12 +25,11 @@ function Plants(props) {
       })
     }
     dispatch(addPlants(temp))
-    //console.log("Pushed plants")
   }
-
-  //console.log(plantsObject.length)
+  //Add new plants to the ecosystem every 25 ticks
   useInterval(generatePlants,props.speed*25)
   
+  //plant item to be rendered
   const plantItem = plantsObject.map((item,id)=>{
     const plantsStyle ={
       top: `${item.top}%`,

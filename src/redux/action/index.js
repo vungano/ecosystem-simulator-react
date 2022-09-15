@@ -1,3 +1,5 @@
+//REDUX ACTIONS
+
 export const setRabbits = (state) =>{
     return{
         type: 'SET_RABBITS',

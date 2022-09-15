@@ -1,3 +1,5 @@
+//FOX REDUCER ie global state for storing and tracking all the plants in the ecosystem
+
 const initialState = {foxes:[]}
 
 for(let i=0; i<5;i++){

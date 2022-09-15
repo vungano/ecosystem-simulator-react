@@ -101,11 +101,6 @@ function Rabbit(props) {
     }    
   }  
 
-  //console.log("<!------------------!>")
-  //console.log(rabbitObject[0].top ," vs ", rabbitObject[1].top )
-  //console.log(rabbitObject[0].left ," vs ", rabbitObject[1].left )
-  //rabbitObject.length>0 ? console.log(rabbitObject[rabbitObject.length-1].energy , " vs ", rabbitObject[0].energy) : console.log('0')
- 
   //function to check if there are any rabbits nearby for mating and if they have enough sex drive to mate
   function checkRadar(){
     for(let i=0; i<rabbitObject.length-1;i++){
@@ -160,7 +155,7 @@ function Rabbit(props) {
     }
   }
 
-  
+  //putting all the functions in one place so that they get called at the same time
   function updateInterval(){
     checkFoodInRadar()
     moveRabbit()

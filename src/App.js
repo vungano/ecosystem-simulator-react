@@ -6,12 +6,12 @@ import InfoField from "./components/InfoField";
 
 function App() {
 
+  //speed state
   const [speed,setSpeed] = useState(1000)
  
   function getSpeed(speedValue){
     let tempSpeed = 1000 - speedValue*8
     setSpeed(tempSpeed) 
-    
   }
   
   return (

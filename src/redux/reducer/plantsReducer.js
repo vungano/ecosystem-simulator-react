@@ -1,3 +1,5 @@
+//PLANTS REDUCER ie global state for storing and tracking all the plants in the ecosystem
+
 const initialState = {plants:[]}
 
 for(let i=0;i<30;i++){
