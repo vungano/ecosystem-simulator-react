@@ -1,45 +1,24 @@
-const initialState = {
-    foxes:[
-        {
-            top: 90,
-            left: 14,
-            gender: 0,
-            energy: 100,
-            age:0,
-            sexDrive:10
-            },
-            { top: 8,
-                left: 30,
-                gender: 1,
-                energy: 95,
-                age:1,
-                sexDrive:10
-              },            {
-                top: 28,
-                left: 80,
-                gender: 0,
-                energy: 94,
-                age:1,
-                sexDrive:10
-              },
-              {
-                top: 34,
-                left: 62,
-                gender: 1,
-                energy: 100,
-                age:1,
-                sexDrive:10
-              },
-              {
-                top: 58,
-                left: 16,
-                gender: 0,
-                energy: 93,
-                age:1,
-                sexDrive:10
-              }        
-    ]
+const initialState = {foxes:[]}
+
+for(let i=0; i<5;i++){
+    const random = Math.random()*98
+    const random2 = Math.random()*98
+    let randomGender = Math.floor(Math.random() * 2);
+    let height = (Math.floor(random/2)*2)
+    let width = (Math.floor(random2/2)*2)
+
+    //generate new Fox and add it to initial state
+    let newFox={
+      top:height,
+      left: width,
+      gender: randomGender,
+      energy: 100,
+      age:0,
+      sexDrive:16
+    }
+   initialState.foxes.push(newFox)
 }
+
 
 const foxesReducer = (state = initialState.foxes , action) =>{
     switch(action.type){

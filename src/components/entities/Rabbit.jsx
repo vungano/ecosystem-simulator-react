@@ -1,5 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import React from 'react'
 import useInterval from '../../hooks/useInterval'
 import '../../styles/rabbit-entity.css'
 import { setRabbits, addPlants } from '../../redux/action'
@@ -8,7 +7,6 @@ import { useSelector, useDispatch } from 'react-redux'
 function Rabbit(props) {
   //State in redux
   const rabbitObject = useSelector(state=> state.rabbits)
-  const foxObject = useSelector(state=> state.foxes)
   const plantsObject = useSelector(state=> state.plants)
   const dispatch = useDispatch()
   
@@ -32,7 +30,9 @@ function Rabbit(props) {
                   break;
                 case 3:
                   (y.left-4>0)? y.left-=2 : y.left+=2 
-                  break;       
+                  break; 
+                default:
+                     y.top = y.top
               }           
             }    
 
@@ -53,7 +53,7 @@ function Rabbit(props) {
               let temp = [...rabbitObject]
        
               //Check if 2 different sexes have met if so produce a kid and check if they have sufficient sex drive
-              if(rabbitObject[i].gender != rabbitObject[j].gender && (rabbitObject[i].sexDrive>25 && rabbitObject[j].sexDrive>25)){
+              if(rabbitObject[i].gender != rabbitObject[j].gender && (rabbitObject[i].sexDrive>10 && rabbitObject[j].sexDrive>10)){
                 const random = Math.random()*98
                 const random2 = Math.random()*98
                 let randomGender = Math.floor(Math.random() * 2);
@@ -65,7 +65,7 @@ function Rabbit(props) {
                   top:height,
                   left: width,
                   gender: randomGender,
-                  energy: 30,
+                  energy: 70,
                   age:0,
                   sexDrive:0
                 }
@@ -112,7 +112,7 @@ function Rabbit(props) {
        for(let j=1; j<rabbitObject.length;j++){
           if(((rabbitObject[i].top -rabbitObject[j].top)<=6 && (rabbitObject[i].top -rabbitObject[j].top)>=-6) && ((rabbitObject[i].left-rabbitObject[j].left)<=6 && (rabbitObject[i].left-rabbitObject[j].left)>=-6)){
               //rabbit i is male and j is female
-              if((rabbitObject[i].gender>rabbitObject[j].gender) && (rabbitObject[i].sexDrive>25 && rabbitObject[j].sexDrive>25)){
+              if((rabbitObject[i].gender>rabbitObject[j].gender) && (rabbitObject[i].sexDrive>10 && rabbitObject[j].sexDrive>10)){
                 let tempState = [...rabbitObject]
                 tempState[i].top = tempState[j].top
                 tempState[i].left = tempState[j].left                
@@ -120,7 +120,7 @@ function Rabbit(props) {
               }
 
               //rabbit i is female and j is male
-              else if((rabbitObject[i].gender<rabbitObject[j].gender) && (rabbitObject[i].sexDrive>25 && rabbitObject[j].sexDrive>25)){
+              else if((rabbitObject[i].gender<rabbitObject[j].gender) && (rabbitObject[i].sexDrive>10 && rabbitObject[j].sexDrive>10)){
                 let tempState = [...rabbitObject]
                 tempState[j].top = tempState[i].top
                 tempState[j].left = tempState[i].left                

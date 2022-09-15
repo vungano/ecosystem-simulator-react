@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 import "chartjs-plugin-streaming";
 import moment from "moment";
 import '../styles/infofield.css'
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ReactSlider from "react-slider";
 import '../styles/slider.css'
 
@@ -51,6 +51,7 @@ function InfoField(props) {
     iniitialRabbits = rabbits.length
     initialFoxes = foxes.length
     initialPlants = plants.length
+    console.log(foxes)
   },[])
 
   let rabbitMales= 0
@@ -67,7 +68,6 @@ function InfoField(props) {
   }
   rabbitMales = rabbits.length - rabbitFemales
 
-  
   //calculate the females and males for foxes
   for(let i=0; i<foxes.length; i++){
     if(foxes[i].gender==0){
@@ -118,7 +118,7 @@ function InfoField(props) {
         {
           ticks: {
             beginAtZero: true,
-            max: 20
+            max: 100
           }
         }
       ]
@@ -136,7 +136,7 @@ function InfoField(props) {
           <Line data={data} options={options}  />
         </div>
 
-        <div class="slidecontainer">
+        <div className="slidecontainer">
           <ReactSlider
             className="horizontal-slider"
             thumbClassName="example-thumb"
@@ -153,7 +153,7 @@ function InfoField(props) {
               <p>Starting Pop</p>  <p className="centre">{iniitialRabbits}</p> <p className="centre">{initialFoxes}</p><p className="centre">{initialPlants}</p>   
               <p>Current Pop</p>   <p className="centre">{rabbits.length}</p>  <p className="centre">{foxes.length}</p> <p className="centre">{plants.length}</p> 
               <p>Males</p>         <p className="centre">{rabbitMales}</p>     <p className="centre">{foxesMales}</p>   <p className="centre">null</p>       
-              <p>Females</p>       <p className="centre">{rabbitFemales}</p>   <p className="centre">{rabbitMales}</p>  <p className="centre">null</p>
+              <p>Females</p>       <p className="centre">{rabbitFemales}</p>   <p className="centre">{foxesFemales}</p> <p className="centre">null</p>
           </div>  
 
 

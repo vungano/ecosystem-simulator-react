@@ -1,5 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import React from 'react'
 import useInterval from '../../hooks/useInterval'
 import '../../styles/fox-entity.css'
 import { setFoxes, setRabbits} from '../../redux/action'
@@ -31,7 +30,9 @@ function Foxes(props) {
                   break;
                 case 3:
                   (y.left-4>0)? y.left-=2 : y.left+=2 
-                  break;       
+                  break;  
+                default:
+                  y.top = y.top       
               }           
             }    
 
@@ -52,7 +53,7 @@ function Foxes(props) {
               let temp = [...foxObject]
        
               //Check if 2 different sexes have met if so produce a kid and check if they have sufficient sex drive
-              if(foxObject[i].gender != foxObject[j].gender && (foxObject[i].sexDrive>10 && foxObject[j].sexDrive>10)){
+              if(foxObject[i].gender != foxObject[j].gender && (foxObject[i].sexDrive>15 && foxObject[j].sexDrive>15)){
                 const random = Math.random()*98
                 const random2 = Math.random()*98
                 let randomGender = Math.floor(Math.random() * 2);
@@ -112,7 +113,7 @@ function Foxes(props) {
        for(let j=1; j<foxObject.length;j++){
           if(((foxObject[i].top -foxObject[j].top)<=6 && (foxObject[i].top -foxObject[j].top)>=-6) && ((foxObject[i].left-foxObject[j].left)<=6 && (foxObject[i].left-foxObject[j].left)>=-6)){
               //rabbit i is male and j is female
-              if((foxObject[i].gender>foxObject[j].gender) && (foxObject[i].sexDrive>10 && foxObject[j].sexDrive>10)){
+              if((foxObject[i].gender>foxObject[j].gender) && (foxObject[i].sexDrive>15 && foxObject[j].sexDrive>15)){
                 let tempState = [...foxObject]
                 tempState[i].top = tempState[j].top
                 tempState[i].left = tempState[j].left                
@@ -120,7 +121,7 @@ function Foxes(props) {
               }
 
               //rabbit i is female and j is male
-              else if((foxObject[i].gender<foxObject[j].gender) && (foxObject[i].sexDrive>10 && foxObject[j].sexDrive>10)){
+              else if((foxObject[i].gender<foxObject[j].gender) && (foxObject[i].sexDrive>15 && foxObject[j].sexDrive>15)){
                 let tempState = [...foxObject]
                 tempState[j].top = tempState[i].top
                 tempState[j].left = tempState[i].left                

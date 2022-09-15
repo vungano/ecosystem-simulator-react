@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useInterval from '../../hooks/useInterval'
 import { addPlants } from '../../redux/action'
@@ -12,7 +12,7 @@ function Plants(props) {
 
   function generatePlants(){
     let temp = [...plantsObject]
-    for(let i=0; i<10; i++){
+    for(let i=0; i<7; i++){
       const random = Math.random()*98
       const random_2 = Math.random()*98
       let height = (Math.floor(random/2)*2)

@@ -13,9 +13,7 @@ function App() {
     setSpeed(tempSpeed) 
     
   }
-
-  console.log(speed)
-
+  
   return (
     <div className="app">
         <MainField speed={speed}/>  
